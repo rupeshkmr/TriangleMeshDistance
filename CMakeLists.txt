@@ -1,5 +1,2 @@
-cmake_minimum_required(VERSION 3.1)
-project(TriangleMeshDistance)
-set(CMAKE_CXX_STANDARD 11)
-
-add_subdirectory(tests)
+add_library(tmd INTERFACE)
+target_include_directories(tmd INTERFACE "TriangleMeshDistance/include")
