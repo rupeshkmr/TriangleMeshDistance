@@ -133,6 +133,15 @@ namespace tmd
 		void _query(Result &result, const Node &node, const Vec3d& point) const;
 
 	public:
+        // for testing
+        std::vector<std::array<double,3>> getVertices() 
+        { 
+            std::vector<std::array<double, 3> > v;
+            for(auto it=vertices.begin(); it!=vertices.end(); it++)
+                v.push_back((*it).v); 
+            return v; 
+        }
+        std::vector<std::array<int, 3>> getFaces() { return triangles; }
 
 		/* Public methods */
 		TriangleMeshDistance() = default;
