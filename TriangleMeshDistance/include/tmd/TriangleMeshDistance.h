@@ -417,6 +417,14 @@ inline void tmd::TriangleMeshDistance::_construct()
 		this->pseudonormals_vertices[triangle[2]] += alpha_2 * triangle_normal;
 
 		// Edge
+        /* for(int ei=0; ei<3; ei++)
+        {
+            int vi = triangle[ei]; 
+            int vj = triangle[(ei + 1)%3];
+            int eid = n_vertices * std::min(vi, vj) + std::max(vi, vj);
+            if( eid == 6124999)
+                std::cout << "face " << i << " vi " << vi << " vj " << vj << std::endl;
+        } */
 		add_edge_normal(triangle[0], triangle[1], triangle_normal);
 		add_edge_normal(triangle[1], triangle[2], triangle_normal);
 		add_edge_normal(triangle[0], triangle[2], triangle_normal);
@@ -437,7 +445,9 @@ inline void tmd::TriangleMeshDistance::_construct()
 	this->is_manifold = true;
 	for (const auto edge_count : edges_count) {
 		if (edge_count.second != 2) {
+            std::cout << "edge count " << edge_count.first << " " << edge_count.second << std::endl;
 			this->is_manifold = false;
+            break;
 		}
 	}
 
